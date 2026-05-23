@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACCESS GRANTED | Happy Birthday</title>
+  <meta name="description" content="A classified birthday celebration — Access Level: Top Secret">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="customCursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <!-- Canvas Layers -->
+
+  <canvas id="cursorCanvas"></canvas>
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Scanline Overlay -->
+  <div class="scanline-overlay"></div>
+
+  <!-- ============ LOADING SCREEN ============ -->
+  <div id="loadingScreen" class="loading-screen">
+    <div id="bootLines" style="text-align:left; max-width:600px; width:90%;"></div>
+    <div class="boot-progress" id="bootProgress" style="display:none;">
+      <div class="boot-progress-bar" id="bootProgressBar"></div>
+    </div>
+    <div class="access-granted-boot" id="accessGrantedBoot">ACCESS GRANTED</div>
+  </div>
+
+  <!-- ============ MAIN CONTENT ============ -->
+  <div id="mainContent" class="main-content hidden">
+
+    <!-- Music Toggle -->
+    <button class="music-toggle" id="musicToggle" title="Toggle Music">♪ MUSIC: ON</button>
+    <audio id="bgMusic" src="nae_nae_nigga.mp3" loop></audio>
+
+    <!-- Cyber Clock -->
+    <div class="cyber-clock" id="cyberClock">00:00:00</div>
+
+    <!-- ---- HERO SECTION ---- -->
+    <section class="hero" id="heroSection">
+      <h1 class="hero-title" id="heroTitle">ACCESS GRANTED</h1>
+      <!-- CUSTOMIZE: Change friend's name below -->
+      <h2 class="hero-name">Happy Birthday, Aaryan</h2>
+      <p class="typing-message" id="typingMessage"></p>
+      <div class="ip-tracker" id="ipTracker"></div>
+    </section>
+
+    <!-- ---- PROFILE CARD ---- -->
+    <section class="profile-section reveal">
+      <div class="section-title">&#9608; CLASSIFIED <span>DOSSIER</span></div>
+      <div class="profile-card" id="profileCard">
+        <div class="profile-avatar">A</div>
+        <div class="profile-header">// SUBJECT PROFILE</div>
+        <!-- CUSTOMIZE: Edit name, age, and details below -->
+        <div class="profile-row"><span class="profile-label">CODENAME</span><span class="profile-value">Aaryan</span></div>
+        <div class="profile-row"><span class="profile-label">REAL NAME</span><span class="profile-value cyan">kajukatli</span></div>
+        <div class="profile-row"><span class="profile-label">AGE</span><span class="profile-value">16</span></div>
+        <div class="profile-row"><span class="profile-label">STATUS</span><span class="profile-value purple">Legendary Human</span></div>
+        <div class="profile-row"><span class="profile-label">THREAT LEVEL</span><span class="profile-value red">Too Cool</span></div>
+        <div class="profile-row"><span class="profile-label">SPECIAL SKILLS</span><span class="profile-value">Being Awesome</span></div>
+        <div class="profile-row"><span class="profile-label">CLEARANCE</span><span class="profile-value cyan">OMEGA-16</span></div>
+        <div class="profile-row"><span class="profile-label">MISSION</span><span class="profile-value purple">Have the Best Birthday Ever</span></div>
+      </div>
+    </section>
+
+    <!-- ---- HACK THE SYSTEM ---- -->
+    <section class="reveal">
+      <div class="section-title">&#9760; HACK THE <span>SYSTEM</span></div>
+      <div class="hack-section">
+        <div style="text-align:center;">
+          <button class="hack-btn" id="hackBtn">&#9889; INITIATE HACK SEQUENCE</button>
+        </div>
+        <div class="hack-terminal" id="hackTerminal"></div>
+        <div class="surprise-msg" id="surpriseMsg">
+          <h2>&#127881; SYSTEM OVERRIDE COMPLETE &#127881;</h2>
+          <p>The system has been hacked to deliver one truth:<br>
+          <strong style="color:var(--purple);">You are absolutely incredible, and the world is better because you exist.</strong><br><br>
+          Happy Birthday, you legendary human! &#128640;</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- MEMORY VAULT ---- -->
+    <section class="reveal">
+      <div class="section-title">&#128274; MEMORY <span>VAULT</span></div>
+      <p style="color:#666; font-size:.8rem; margin-bottom:24px; text-align:center;">// Click to decrypt classified memories</p>
+      <div class="vault-grid" id="vaultGrid">
+        <!-- CUSTOMIZE: Replace gradient-placeholder with <img src="your-photo.jpg" alt=""> -->
+        <div class="vault-card" data-caption="Memory #001 — The Beginning">
+          <div class="encrypted-overlay">
+            <div class="lock-icon">&#128274;</div>
+            <div class="file-name">memory_001.enc</div>
+          </div>
+          <div class="photo-placeholder"><img src="6.jpeg" alt="Memory #001"></div>
+        </div>
+        <div class="vault-card" data-caption="Memory #002 — The Adventures">
+          <div class="encrypted-overlay">
+            <div class="lock-icon">&#128274;</div>
+            <div class="file-name">memory_002.enc</div>
+          </div>
+          <div class="photo-placeholder"><img src="5.jpeg" alt="Memory #002"></div>
+        </div>
+        <div class="vault-card" data-caption="Memory #003 — The Laughs">
+          <div class="encrypted-overlay">
+            <div class="lock-icon">&#128274;</div>
+            <div class="file-name">memory_003.enc</div>
+          </div>
+          <div class="photo-placeholder"><img src="4.jpeg" alt="Memory #003"></div>
+        </div>
+        <div class="vault-card" data-caption="Memory #004 — The Memories">
+          <div class="encrypted-overlay">
+            <div class="lock-icon">&#128274;</div>
+            <div class="file-name">memory_004.enc</div>
+          </div>
+          <div class="photo-placeholder"><img src="3.jpeg" alt="Memory #004"></div>
+        </div>
+        <div class="vault-card" data-caption="Memory #005 — Top Secret">
+          <div class="encrypted-overlay">
+            <div class="lock-icon">&#128274;</div>
+            <div class="file-name">memory_005.enc</div>
+          </div>
+          <div class="photo-placeholder"><img src="2.jpeg" alt="Memory #005"></div>
+        </div>
+        <div class="vault-card" data-caption="Memory #006 — Legendary Moment">
+          <div class="encrypted-overlay">
+            <div class="lock-icon">&#128274;</div>
+            <div class="file-name">memory_006.enc</div>
+          </div>
+          <div class="photo-placeholder"><img src="1.jpeg" alt="Memory #006"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Vault Modal -->
+    <div class="vault-modal" id="vaultModal">
+      <button class="vault-modal-close" id="vaultModalClose">&times;</button>
+      <div class="vault-modal-content">
+        <div id="vaultModalImage"></div>
+        <div class="vault-modal-caption" id="vaultModalCaption"></div>
+      </div>
+    </div>
+
+    <!-- ---- SECRET TERMINAL ---- -->
+    <section class="reveal">
+      <div class="section-title">&#62; SECRET <span>TERMINAL</span></div>
+      <div class="terminal-section">
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <div class="terminal-dot r"></div>
+            <div class="terminal-dot y"></div>
+            <div class="terminal-dot g"></div>
+            <span class="terminal-header-title">birthday_terminal v2.0 — bash</span>
+          </div>
+          <div class="terminal-body" id="terminalBody">
+            <div class="line response">Welcome to the Birthday Terminal v2.0</div>
+            <div class="line info">Type "help" for available commands.</div>
+          </div>
+          <div class="terminal-input-line">
+            <span class="prompt-symbol">$&gt;</span>
+            <input type="text" class="terminal-input" id="terminalInput" placeholder="type a command..." autocomplete="off" spellcheck="false">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ---- COUNTDOWN ---- -->
+    <section class="reveal countdown-section">
+      <div class="section-title">&#9200; CYBER <span>CLOCK</span></div>
+      <p style="color:#666; font-size:.8rem; margin-bottom:8px;">// Time since birthday protocol activation</p>
+      <div class="countdown-display" id="countdownDisplay">
+        <div class="countdown-item"><div class="countdown-value" id="cdHours">00</div><div class="countdown-label">Hours</div></div>
+        <div class="countdown-item"><div class="countdown-value" id="cdMins">00</div><div class="countdown-label">Minutes</div></div>
+        <div class="countdown-item"><div class="countdown-value" id="cdSecs">00</div><div class="countdown-label">Seconds</div></div>
+      </div>
+    </section>
+
+    <!-- ---- FINAL SECTION ---- -->
+    <section class="final-section reveal">
+      <div class="mission-complete">MISSION COMPLETE</div>
+      <div class="final-note">
+        <!-- CUSTOMIZE: Write your personal birthday message below -->
+        <p>Dear Aaryan,</p>
+        <br>
+        <p>Another year around the sun, another level unlocked. You've hacked through every challenge life threw at you, bypassed every firewall of doubt, and compiled a life full of amazing memories.</p>
+        <br>
+        <p>This isn't just a birthday — this is a <strong style="color:var(--purple);">system upgrade</strong>. You're now running on a newer, better, even more legendary version of yourself.</p>
+        <br>
+        <p>Keep being the incredible, unstoppable force that you are. The world's a better place with you in it. &#128640;</p>
+        <br>
+        <div class="signature">— Your Secret Admirer (or maybe just a friend who cares a lot) &#128154;</div>
+      </div>
+      <pre class="final-ascii">
+    ╔═══════════════════════════════════╗
+    ║                                   ║
+    ║   ★  HAPPY BIRTHDAY, LEGEND!  ★   ║
+    ║                                   ║
+    ║      🎂  Another Year Hacked  🎂   ║
+    ║                                   ║
+    ╚═══════════════════════════════════╝
+      </pre>
+      <p style="color:#444; font-size:.65rem; margin-top:40px;">// Type "party" anywhere to unlock Party Mode 🎉</p>
+    </section>
+
+  </div><!-- end mainContent -->
+
+  <!-- Cyber Alert Container -->
+  <div id="cyberAlertContainer"></div>
+
+  <!-- AI Popup -->
+  <div class="ai-popup" id="aiPopup">
+    <div class="ai-label">&#9654; AI ASSISTANT</div>
+    <div class="ai-msg" id="aiMsg"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
