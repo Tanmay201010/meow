@@ -14,9 +14,64 @@ const CONFIG = {
   partyCode: "party",
 };
 
-// (matrix rain removed)
+// ===== MATRIX RAIN BACKGROUND =====
+(function initMatrixRain() {
+  const canvas = document.getElementById("matrixCanvas");
+  if (!canvas) return;
+  const ctx = canvas.getContext("2d");
 
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener("resize", resize);
 
+  const chars = "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ{}[]<>|/\\=+*&@#$%";
+  const fontSize = 14;
+  let columns = Math.floor(canvas.width / fontSize);
+  let drops = Array.from({ length: columns }, () => Math.random() * -100);
+
+  window.addEventListener("resize", () => {
+    columns = Math.floor(canvas.width / fontSize);
+    drops = Array.from({ length: columns }, () => Math.random() * -100);
+  });
+
+  function draw() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.font = fontSize + "px 'Share Tech Mono', monospace";
+
+    for (let i = 0; i < drops.length; i++) {
+      const char = chars[Math.floor(Math.random() * chars.length)];
+      const x = i * fontSize;
+      const y = drops[i] * fontSize;
+
+      // Bright green for the leading character, dimmer for the trail
+      if (Math.random() > 0.98) {
+        ctx.fillStyle = "#ffffff";
+      } else {
+        const brightness = Math.random();
+        if (brightness > 0.5) {
+          ctx.fillStyle = "#00ff41";
+        } else {
+          ctx.fillStyle = "rgba(0, 255, 65, 0.4)";
+        }
+      }
+
+      ctx.fillText(char, x, y);
+
+      if (y > canvas.height && Math.random() > 0.975) {
+        drops[i] = 0;
+      }
+      drops[i]++;
+    }
+
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
 
 // ===== CUSTOM CURSOR =====
 (function initCursor() {
